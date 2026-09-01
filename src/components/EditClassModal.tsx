@@ -138,16 +138,24 @@ export const EditClassModal: React.FC<EditClassModalProps> = ({
         <form onSubmit={handleSubmit} className="p-5 sm:p-6 overflow-y-auto space-y-6 flex-1">
           {/* Live Preview Card */}
           <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 shadow-xs flex flex-col sm:flex-row items-center gap-4">
-            <div className="relative group shrink-0">
+            <div
+              className="relative shrink-0 group cursor-pointer"
+              onClick={() => fileInputRef.current?.click()}
+              title="Nhấp trực tiếp để chọn & tải ảnh từ máy tính"
+            >
               <img
                 src={formData.avatar}
                 alt="Class Avatar Preview"
-                className="w-20 h-20 rounded-2xl object-cover border-2 border-[#003366] shadow-md bg-white"
+                className="w-20 h-20 rounded-2xl object-cover border-2 border-[#003366] shadow-md bg-white group-hover:opacity-85 transition-opacity"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = INITIAL_CLASS_INFO.avatar;
                 }}
               />
-              <span className="absolute -bottom-2 -right-1 text-[9px] font-extrabold bg-[#003366] text-[#98FF98] px-2 py-0.5 rounded-full border border-white shadow-xs">
+              <div className="absolute inset-0 bg-black/40 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white">
+                <Upload className="w-5 h-5 text-[#98FF98]" />
+                <span className="text-[9px] font-bold text-white mt-0.5">Tải ảnh</span>
+              </div>
+              <span className="absolute -bottom-2 -right-1 text-[9px] font-extrabold bg-[#003366] text-[#98FF98] px-2 py-0.5 rounded-full border border-white shadow-xs z-10">
                 Xem trước
               </span>
             </div>

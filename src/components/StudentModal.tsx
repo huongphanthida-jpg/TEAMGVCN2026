@@ -84,22 +84,35 @@ export const StudentModal: React.FC<StudentModalProps> = ({
           />
 
           <div className="flex items-center gap-4">
-            <div className="relative group shrink-0">
+            <div
+              className={`relative group shrink-0 ${isGVCN ? 'cursor-pointer' : ''}`}
+              onClick={() => isGVCN && avatarInputRef.current?.click()}
+              title={isGVCN ? 'Nhấp trực tiếp để chọn & đổi ảnh đại diện học sinh' : undefined}
+            >
               <img
                 src={formData.avatar}
                 alt={formData.name}
-                className="w-16 h-16 rounded-2xl object-cover border-2 border-[#98FF98] shadow-md"
+                className="w-16 h-16 rounded-2xl object-cover border-2 border-[#98FF98] shadow-md group-hover:opacity-90 transition-opacity"
               />
               {isGVCN && (
-                <button
-                  type="button"
-                  id="btn-modal-change-avatar"
-                  onClick={() => avatarInputRef.current?.click()}
-                  title="Thay đổi ảnh đại diện học sinh"
-                  className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-md border-2 border-[#003366] transition-transform hover:scale-110"
-                >
-                  <Camera className="w-3.5 h-3.5" />
-                </button>
+                <>
+                  <div className="absolute inset-0 bg-black/40 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white">
+                    <Camera className="w-5 h-5 text-[#98FF98]" />
+                    <span className="text-[9px] font-bold text-white mt-0.5">Đổi ảnh</span>
+                  </div>
+                  <button
+                    type="button"
+                    id="btn-modal-change-avatar"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      avatarInputRef.current?.click();
+                    }}
+                    title="Thay đổi ảnh đại diện học sinh"
+                    className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-md border-2 border-[#003366] transition-transform hover:scale-110 z-10"
+                  >
+                    <Camera className="w-3.5 h-3.5" />
+                  </button>
+                </>
               )}
             </div>
             <div>

@@ -464,36 +464,36 @@ export const ConnectView: React.FC<ConnectViewProps> = ({
       )}
 
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-[#003366] via-[#004080] to-[#002244] text-white p-5 sm:p-6 rounded-3xl shadow-xl border border-blue-900/40 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-[#003366] via-[#004080] to-[#002244] text-white p-5 sm:p-6 rounded-3xl shadow-xl border border-blue-900/40 relative overflow-hidden space-y-4">
         <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-10 right-20 w-60 h-60 bg-sky-500/15 rounded-full blur-2xl pointer-events-none" />
 
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 mb-2 flex-wrap">
-              <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-xl bg-white/15 text-[#98FF98] border border-white/20 flex items-center gap-1.5">
-                <HeartHandshake className="w-3.5 h-3.5" />
-                CỔNG KẾT NỐI ĐA CHIỀU • SỔ LIÊN LẠC ĐIỆN TỬ
-              </span>
-              <span className="text-xs text-slate-300">
-                {classInfo?.className || 'Lớp 12A1'} • {classInfo?.schoolName || 'THPT Trần Nguyên Hãn'}
-              </span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white flex items-center gap-2.5">
-              Kênh Kết Nối Giáo Viên - Phụ Huynh - Học Sinh
-            </h1>
-            <p className="text-xs sm:text-sm text-slate-200 mt-1 max-w-2xl leading-relaxed">
-              Hệ thống kết nối trực tuyến 24/7, nhắn tin tương tác tức thì, đặt lịch trao đổi chuyên sâu, phân quyền quản lý và xóa dữ liệu cho Giáo viên chủ nhiệm.
-            </p>
+        <div className="relative z-10 space-y-2">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-xl bg-white/15 text-[#98FF98] border border-white/20 flex items-center gap-1.5 shadow-2xs">
+              <HeartHandshake className="w-3.5 h-3.5" />
+              CỔNG KẾT NỐI ĐA CHIỀU • SỔ LIÊN LẠC ĐIỆN TỬ
+            </span>
+            <span className="text-xs text-slate-300 font-medium">
+              {classInfo?.className || 'Lớp 12A1'} • {classInfo?.schoolName || 'THPT Trần Nguyên Hãn'}
+            </span>
           </div>
 
-          {/* Action buttons on header */}
-          <div className="flex items-center gap-2.5 flex-wrap shrink-0">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-white w-full sm:whitespace-nowrap">
+            Kênh Kết Nối Giáo Viên - Phụ Huynh - Học Sinh
+          </h1>
+
+          <p className="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-4xl">
+            Hệ thống kết nối trực tuyến 24/7, nhắn tin tương tác tức thì, đặt lịch trao đổi chuyên sâu, phân quyền quản lý và xóa dữ liệu cho Giáo viên chủ nhiệm.
+          </p>
+
+          {/* Action buttons on header - Clean horizontal row */}
+          <div className="flex items-center gap-2.5 flex-wrap pt-3 border-t border-white/15">
             {onNavigateToSeating && (
               <button
                 type="button"
                 onClick={onNavigateToSeating}
-                className="px-3.5 py-2 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold flex items-center gap-2 transition-all shadow-xs"
+                className="px-3.5 py-2 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold flex items-center gap-2 transition-all shadow-xs active:scale-95 cursor-pointer"
               >
                 <LayoutGrid className="w-4 h-4 text-[#98FF98]" />
                 <span>Xem Sơ Đồ Lớp (4 Dãy)</span>
@@ -535,7 +535,7 @@ export const ConnectView: React.FC<ConnectViewProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsDataManagementOpen(true)}
-                  className="px-3.5 py-2 rounded-2xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-400/40 text-rose-100 text-xs font-bold flex items-center gap-2 transition-all shadow-xs"
+                  className="px-3.5 py-2 rounded-2xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-400/40 text-rose-100 text-xs font-bold flex items-center gap-2 transition-all shadow-xs active:scale-95 cursor-pointer"
                   title="Quản lý và xóa dữ liệu kênh kết nối dành cho GVCN"
                 >
                   <Trash2 className="w-4 h-4 text-rose-300" />
@@ -545,7 +545,7 @@ export const ConnectView: React.FC<ConnectViewProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsNewMeetingModalOpen(true)}
-                  className="px-4 py-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-xs font-bold flex items-center gap-2 transition-all shadow-md active:scale-95"
+                  className="px-4 py-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-xs font-bold flex items-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>Đặt Lịch Hẹn PH</span>

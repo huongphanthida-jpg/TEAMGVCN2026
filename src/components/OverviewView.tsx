@@ -270,9 +270,9 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
           : 'bg-[#003366] border-[#002244]'
       }`}>
         <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-emerald-500/10 to-transparent pointer-events-none" />
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 mb-1.5">
+        <div className="relative z-10 space-y-3">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2 flex-wrap">
               <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${
                 role === 'bgh'
                   ? 'bg-amber-400/20 text-amber-300 border-amber-400/40'
@@ -292,7 +292,8 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               </span>
               <span className="text-xs text-slate-300">{currentClass.schoolName}</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight w-full sm:whitespace-nowrap">
               {role === 'bgh'
                 ? `Tổng Quan Giám Sát Lớp ${currentClass.className}`
                 : role === 'gvbm'
@@ -301,7 +302,8 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                 ? `Bảng Điều Hành Ban Cán Sự - ${currentClass.className}`
                 : `Bảng Điều Khiển Quản Lý ${currentClass.className}`}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 mt-1">
+
+            <p className="text-xs sm:text-sm text-slate-300 max-w-4xl">
               {role === 'bgh'
                 ? `Thanh tra viên: ${currentBgh.name} (${currentBgh.dutyRole || 'Ban Giám Hiệu'}) • GVCN: ${currentTeacher.name}`
                 : role === 'gvbm'

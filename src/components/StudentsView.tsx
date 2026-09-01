@@ -245,8 +245,8 @@ export const StudentsView: React.FC<StudentsViewProps> = ({
               </span>
             )}
           </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-[#003366] mt-1">
-            Quản Lý Hồ Sơ Học Sinh
+          <h2 className="text-xl sm:text-2xl font-black text-[#003366] mt-1 whitespace-nowrap">
+            Quản Lý Hồ Sơ Học Sinh Lớp {classInfo?.className || '12A1'}
           </h2>
           <p className="text-xs text-slate-500">
             Hồ sơ tích hợp: Sở trường, định hướng đại học, liên hệ khẩn cấp & dữ liệu học tập

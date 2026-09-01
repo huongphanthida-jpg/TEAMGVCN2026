@@ -1,0 +1,6 @@
+{
+  "name": "GIÁO VIÊN CHỦ NHIỆM 2027",
+  "description": "Hệ thống quản lý lớp học toàn diện GIÁO VIÊN CHỦ NHIỆM 2027 và kết nối Giáo viên - Học sinh - Phụ huynh theo chuẩn EdTech THPT Trần Nguyên Hãn",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

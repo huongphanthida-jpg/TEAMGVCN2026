@@ -964,7 +964,6 @@ export const AcademicView: React.FC<AcademicViewProps> = ({
           </div>
         </div>
       </div>
-      </div>
 
       {/* Gradebook Table */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">

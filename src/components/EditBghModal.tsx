@@ -144,16 +144,24 @@ export const EditBghModal: React.FC<EditBghModalProps> = ({
         <form onSubmit={handleSubmit} className="p-5 sm:p-6 overflow-y-auto space-y-6 flex-1">
           {/* Live Preview BGH Profile Card */}
           <div className="p-4 rounded-2xl bg-amber-50/50 border border-amber-200/80 shadow-xs flex flex-col sm:flex-row items-center gap-4">
-            <div className="relative group shrink-0">
+            <div
+              className="relative shrink-0 group cursor-pointer"
+              onClick={() => fileInputRef.current?.click()}
+              title="Nhấp trực tiếp để chọn & tải ảnh từ máy tính"
+            >
               <img
                 src={formData.avatar}
                 alt={formData.name}
-                className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border-3 border-amber-500 shadow-md"
+                className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border-3 border-amber-500 shadow-md group-hover:opacity-85 transition-opacity"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = INITIAL_BGH_INFO.avatar;
                 }}
               />
-              <span className="absolute -bottom-1.5 -right-1.5 bg-amber-600 text-white p-1 rounded-full shadow border-2 border-white">
+              <div className="absolute inset-0 bg-black/40 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white">
+                <Upload className="w-5 h-5 text-amber-300" />
+                <span className="text-[9px] font-bold text-white mt-0.5">Tải ảnh</span>
+              </div>
+              <span className="absolute -bottom-1.5 -right-1.5 bg-amber-600 text-white p-1 rounded-full shadow border-2 border-white z-10">
                 <Landmark className="w-3.5 h-3.5" />
               </span>
             </div>

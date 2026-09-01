@@ -444,28 +444,38 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
           <div>
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3.5">
-                <div className="relative group/avatar shrink-0">
+                <div
+                  className={`relative group/avatar shrink-0 ${role === 'gvcn' ? 'cursor-pointer' : ''}`}
+                  onClick={() => role === 'gvcn' && classAvatarInputRef.current?.click()}
+                  title={role === 'gvcn' ? 'Nhấp trực tiếp để chọn & đổi ảnh đại diện lớp từ máy tính' : undefined}
+                >
                   <img
                     src={currentClass.avatar}
                     alt={currentClass.className}
-                    className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl object-cover border-2 border-[#003366] shadow-md bg-slate-100"
+                    className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl object-cover border-2 border-[#003366] shadow-md bg-slate-100 group-hover/avatar:opacity-85 transition-opacity"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = defaultClass.avatar;
                     }}
                   />
                   {role === 'gvcn' && (
-                    <button
-                      type="button"
-                      id="btn-class-avatar-camera"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        classAvatarInputRef.current?.click();
-                      }}
-                      title="Chọn ảnh từ máy tính/điện thoại để đổi ảnh đại diện lớp"
-                      className="absolute -bottom-1.5 -right-1.5 w-7 h-7 rounded-full bg-[#003366] hover:bg-blue-800 text-white flex items-center justify-center shadow-md border-2 border-white transition-all transform hover:scale-110 cursor-pointer"
-                    >
-                      <Camera className="w-3.5 h-3.5 text-[#98FF98]" />
-                    </button>
+                    <>
+                      <div className="absolute inset-0 bg-black/40 rounded-2xl opacity-0 group-hover/avatar:opacity-100 transition-opacity flex flex-col items-center justify-center text-white">
+                        <Camera className="w-5 h-5 text-[#98FF98]" />
+                        <span className="text-[9px] font-bold text-white mt-0.5">Đổi ảnh</span>
+                      </div>
+                      <button
+                        type="button"
+                        id="btn-class-avatar-camera"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          classAvatarInputRef.current?.click();
+                        }}
+                        title="Chọn ảnh từ máy tính/điện thoại để đổi ảnh đại diện lớp"
+                        className="absolute -bottom-1.5 -right-1.5 w-7 h-7 rounded-full bg-[#003366] hover:bg-blue-800 text-white flex items-center justify-center shadow-md border-2 border-white transition-all transform hover:scale-110 cursor-pointer z-10"
+                      >
+                        <Camera className="w-3.5 h-3.5 text-[#98FF98]" />
+                      </button>
+                    </>
                   )}
                 </div>
 
@@ -542,30 +552,40 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
           <div>
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3.5">
-                <div className="relative group/avatar shrink-0">
+                <div
+                  className={`relative group/avatar shrink-0 ${role === 'gvcn' ? 'cursor-pointer' : ''}`}
+                  onClick={() => role === 'gvcn' && teacherAvatarInputRef.current?.click()}
+                  title={role === 'gvcn' ? 'Nhấp trực tiếp để chọn & đổi ảnh đại diện GVCN từ máy tính' : undefined}
+                >
                   <img
                     src={currentTeacher.avatar}
                     alt={currentTeacher.name}
-                    className="w-16 h-16 sm:w-18 sm:h-18 rounded-full object-cover border-3 border-[#003366] shadow-md bg-slate-100"
+                    className="w-16 h-16 sm:w-18 sm:h-18 rounded-full object-cover border-3 border-[#003366] shadow-md bg-slate-100 group-hover/avatar:opacity-85 transition-opacity"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = defaultTeacher.avatar;
                     }}
                   />
                   {role === 'gvcn' && (
-                    <button
-                      type="button"
-                      id="btn-teacher-avatar-camera"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        teacherAvatarInputRef.current?.click();
-                      }}
-                      title="Chọn ảnh từ máy tính/điện thoại để đổi ảnh chân dung GVCN"
-                      className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-[#003366] hover:bg-blue-800 text-white flex items-center justify-center shadow-md border-2 border-white transition-all transform hover:scale-110 cursor-pointer"
-                    >
-                      <Camera className="w-3.5 h-3.5 text-[#98FF98]" />
-                    </button>
+                    <>
+                      <div className="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover/avatar:opacity-100 transition-opacity flex flex-col items-center justify-center text-white">
+                        <Camera className="w-5 h-5 text-[#98FF98]" />
+                        <span className="text-[9px] font-bold text-white mt-0.5">Đổi ảnh</span>
+                      </div>
+                      <button
+                        type="button"
+                        id="btn-teacher-avatar-camera"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          teacherAvatarInputRef.current?.click();
+                        }}
+                        title="Chọn ảnh từ máy tính/điện thoại để đổi ảnh chân dung GVCN"
+                        className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-[#003366] hover:bg-blue-800 text-white flex items-center justify-center shadow-md border-2 border-white transition-all transform hover:scale-110 cursor-pointer z-10"
+                      >
+                        <Camera className="w-3.5 h-3.5 text-[#98FF98]" />
+                      </button>
+                    </>
                   )}
-                  <span className="absolute -top-1 -left-1 text-[9px] font-extrabold bg-[#003366] text-[#98FF98] px-1.5 py-0.5 rounded-full border border-white shadow-xs">
+                  <span className="absolute -top-1 -left-1 text-[9px] font-extrabold bg-[#003366] text-[#98FF98] px-1.5 py-0.5 rounded-full border border-white shadow-xs z-10">
                     GVCN
                   </span>
                 </div>

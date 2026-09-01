@@ -342,7 +342,7 @@ export const AcademicView: React.FC<AcademicViewProps> = ({
   return (
     <div id="academic-view" className="space-y-6 pb-12">
       {/* 1. Unified Top Navigation & Header Bar (1 Horizontal Line) */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col xl:flex-row xl:items-center justify-between gap-4">
         {/* Left: Main Title & Class Badge on 1 Row */}
         <div className="flex items-center gap-3 min-w-0">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-[#003366] text-white flex items-center justify-center shadow-xs shrink-0">
@@ -350,13 +350,13 @@ export const AcademicView: React.FC<AcademicViewProps> = ({
           </div>
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <h2 className="text-base sm:text-lg md:text-xl font-black text-slate-900 dark:text-white tracking-tight truncate">
+              <h2 className="text-base sm:text-lg md:text-xl font-black text-slate-900 dark:text-white tracking-tight whitespace-nowrap">
                 {activeMainTab === 'two_aspects_emulation'
                   ? 'Bảng Tổng Hợp Thi Đua 2 Mặt'
                   : 'Bảng Điểm Học Tập Các Môn'}
               </h2>
               <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-950 text-blue-900 dark:text-blue-200 shrink-0">
-                {classInfo?.className || 'Lớp 11D5'} • {students.length} Học Sinh
+                {classInfo?.className || 'Lớp 12A1'} • {students.length} Học Sinh
               </span>
               <span className="hidden xl:inline-block text-xs text-slate-400 font-medium">
                 • Niên khóa 2026 - 2027

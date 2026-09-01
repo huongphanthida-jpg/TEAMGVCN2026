@@ -863,6 +863,7 @@ export const AcademicView: React.FC<AcademicViewProps> = ({
             </div>
           </div>
         )}
+      </div>
 
       {/* Radar Chart & University Entrance Score Predictor */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-6">
@@ -1211,8 +1212,8 @@ export const AcademicView: React.FC<AcademicViewProps> = ({
           </table>
         </div>
       </div>
-        </div>
-      )}
+    </div>
+  )}
 
       {/* Import Grades from Excel Modal */}
       {isImportModalOpen && (

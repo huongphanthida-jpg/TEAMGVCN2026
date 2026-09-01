@@ -24,6 +24,7 @@ import {
   Shuffle,
   Trophy,
   BookOpen,
+  Camera,
 } from 'lucide-react';
 import { UserRole, NavigationTab, ClassInfo, TeacherInfo, BghInfo } from '../types';
 
@@ -217,18 +218,31 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* School Badge Header */}
       <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#002850]/50 group">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="relative w-11 h-11 rounded-2xl overflow-hidden bg-white/15 border border-white/20 flex items-center justify-center shrink-0 shadow-inner">
+          <div
+            className={`relative w-11 h-11 rounded-2xl overflow-hidden bg-white/15 border border-white/20 flex items-center justify-center shrink-0 shadow-inner group/avatar ${
+              role === 'gvcn' && onEditClass ? 'cursor-pointer hover:border-[#98FF98]' : ''
+            }`}
+            onClick={() => {
+              if (role === 'gvcn' && onEditClass) onEditClass();
+            }}
+            title={role === 'gvcn' ? 'Nhấp trực tiếp để đổi logo / ảnh đại diện Lớp' : undefined}
+          >
             {currentClass.avatar ? (
               <img
                 src={currentClass.avatar}
                 alt={currentClass.className}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover/avatar:opacity-85 transition-opacity"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = defaultClass.avatar;
                 }}
               />
             ) : (
               <School className="w-5 h-5 text-[#98FF98]" />
+            )}
+            {role === 'gvcn' && onEditClass && (
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/avatar:opacity-100 transition-opacity flex items-center justify-center text-white">
+                <Camera className="w-4 h-4 text-[#98FF98]" />
+              </div>
             )}
           </div>
           <div className="overflow-hidden min-w-0">
@@ -277,26 +291,43 @@ export const Sidebar: React.FC<SidebarProps> = ({
       >
         <div className="flex items-center gap-2.5 min-w-0">
           {role === 'gvcn' ? (
-            <div className="relative shrink-0">
+            <div
+              className="relative shrink-0 group/teacher cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (onEditTeacher) onEditTeacher();
+              }}
+              title="Nhấp trực tiếp để đổi ảnh đại diện GVCN"
+            >
               <img
                 src={currentTeacher.avatar}
                 alt={currentTeacher.name}
-                className="w-9 h-9 rounded-full object-cover border-2 border-[#98FF98] shadow-xs"
+                className="w-9 h-9 rounded-full object-cover border-2 border-[#98FF98] shadow-xs group-hover/teacher:opacity-85 transition-opacity"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = defaultTeacher.avatar;
                 }}
               />
-              <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-[#003366] text-[#98FF98] flex items-center justify-center border border-[#98FF98]">
+              <div className="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover/teacher:opacity-100 transition-opacity flex items-center justify-center">
+                <Camera className="w-3.5 h-3.5 text-[#98FF98]" />
+              </div>
+              <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-[#003366] text-[#98FF98] flex items-center justify-center border border-[#98FF98] z-10">
                 <ShieldCheck className="w-2.5 h-2.5" />
               </span>
             </div>
           ) : role === 'bgh' ? (
-            <div className="relative shrink-0">
+            <div
+              className="relative shrink-0 group/bgh cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (onEditBgh) onEditBgh();
+              }}
+              title="Nhấp trực tiếp để đổi ảnh đại diện BGH"
+            >
               {currentBgh.avatar ? (
                 <img
                   src={currentBgh.avatar}
                   alt={currentBgh.name}
-                  className="w-9 h-9 rounded-full object-cover border-2 border-amber-400 shadow-xs"
+                  className="w-9 h-9 rounded-full object-cover border-2 border-amber-400 shadow-xs group-hover/bgh:opacity-85 transition-opacity"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = defaultBgh.avatar;
                   }}
@@ -306,7 +337,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <Landmark className="w-4 h-4 text-amber-300" />
                 </div>
               )}
-              <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-amber-600 text-amber-100 flex items-center justify-center border border-white">
+              <div className="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover/bgh:opacity-100 transition-opacity flex items-center justify-center">
+                <Camera className="w-3.5 h-3.5 text-amber-300" />
+              </div>
+              <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-amber-600 text-amber-100 flex items-center justify-center border border-white z-10">
                 <Landmark className="w-2 h-2" />
               </span>
             </div>

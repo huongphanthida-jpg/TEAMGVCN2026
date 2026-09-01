@@ -390,9 +390,9 @@ export const MaterialsView: React.FC<MaterialsViewProps> = ({
           ? 'bg-gradient-to-r from-[#002244] via-[#003366] to-[#1e3a8a] border-amber-400/40'
           : 'bg-[#003366] border-[#002244]'
       }`}>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
+        <div className="relative z-10 space-y-3">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 flex-wrap">
               <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${
                 role === 'bgh' ? 'bg-amber-400/20 text-amber-300 border-amber-400/40' : 'bg-[#98FF98]/20 text-[#98FF98] border-[#98FF98]/30'
               }`}>
@@ -400,12 +400,14 @@ export const MaterialsView: React.FC<MaterialsViewProps> = ({
               </span>
               <span className="text-xs text-slate-300">{classInfo?.className || 'Lớp 12A1'} • THPT Trần Nguyên Hãn</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-black tracking-tight">
+
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight w-full sm:whitespace-nowrap">
               {role === 'student' || role === 'parent'
                 ? `Kho Tài Liệu & Nộp Bài - ${currentStudent.name}`
-                : 'Kho Tài Liệu Học Liệu & Quản Trị Tệp Tin Học Vụ'}
+                : 'Kho Học Liệu Điện Tử & Quản Trị Tệp Tin'}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 mt-1">
+
+            <p className="text-xs sm:text-sm text-slate-300 max-w-4xl">
               {role === 'student' || role === 'parent'
                 ? `Mã HS: ${currentStudent.code} • Tổ ${currentStudent.group} • Tải đề cương, tài liệu và nộp bài kiểm tra/bài thi trực tuyến`
                 : 'Quản lý tài liệu Word, PDF, Google Sheet/Excel, Hình ảnh • Chấm bài nộp trực tuyến'}
